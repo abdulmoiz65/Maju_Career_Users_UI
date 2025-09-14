@@ -177,15 +177,18 @@
             font-size: 1.1rem;
         }
 
-
         .job-card {
             background: white;
             border-radius: 15px;
-            padding: 2rem;
+            padding: 1.5rem;
             margin-bottom: 2rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
             border: 1px solid #f1f5f9;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
 
         .job-card:hover {
@@ -193,41 +196,66 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
+        .job-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-active {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .status-inactive {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
         .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
             margin-bottom: 1rem;
+            margin-right: 80px;
         }
 
         .job-title {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: var(--text-dark);
             margin-bottom: 0.5rem;
+            line-height: 1.3;
         }
 
         .job-university {
             color: var(--accent-color);
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
         .job-type {
             background: var(--accent-color);
             color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
             font-weight: 500;
+            display: inline-block;
         }
 
         .job-meta {
             display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
+            flex-direction: column;
+            gap: 0.3rem;
+            margin-bottom: 2rem;
             color: var(--text-light);
+            font-size: 0.85rem;
+            flex-grow: 1;
         }
 
         .job-meta span {
@@ -236,37 +264,23 @@
             gap: 0.5rem;
         }
 
-    
-        .job-skills {
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-tag {
-            background: #e0f2fe;
-            color: #0277bd;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-            display: inline-block;
-        }
-
         .job-actions {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-top: auto;
         }
 
         .btn-apply {
             background: linear-gradient(45deg, var(--success-color), #059669);
             border: none;
             color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 25px;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
             font-weight: 600;
             transition: all 0.3s ease;
             text-decoration: none;
+            font-size: 0.85rem;
         }
 
         .btn-apply:hover {
@@ -275,27 +289,146 @@
             color: white;
         }
 
-        .btn-favorite {
-            background: none;
-            border: 2px solid #e5e7eb;
+        .job-date {
             color: var(--text-light);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
+            font-size: 0.8rem;
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 15px 15px 0 0;
+            padding: 1.5rem;
+        }
+
+        .modal-title {
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .job-detail-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-detail-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            display: block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .job-detail-value {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .job-description {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .modal-footer {
+            padding: 1.5rem 2rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .btn-apply-modal {
+            background: linear-gradient(45deg, var(--success-color), #059669);
+            border: none;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
             transition: all 0.3s ease;
         }
 
-        .btn-favorite:hover {
-            border-color: #ef4444;
-            color: #ef4444;
+        .btn-apply-modal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+            color: white;
         }
 
-        .job-date {
-            color: var(--text-light);
+        /* Footer */
+        .footer {
+            background: var(--secondary-color);
+            color: white;
+            padding: 2rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-content h5 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social a {
+            color:white;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: white !important;
             font-size: 0.9rem;
         }
 
-        
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
@@ -306,25 +439,21 @@
                 padding: 1rem;
             }
             
-            .job-header {
-                flex-direction: column;
-                align-items: start;
-                gap: 1rem;
+            .job-title {
+                font-size: 1.1rem;
             }
             
-            .job-meta {
+            .footer-links {
                 flex-direction: column;
                 gap: 0.5rem;
             }
-            
-            .job-actions {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: stretch;
+
+            .job-header {
+                margin-right: 60px;
             }
-            
-            .filter-sidebar {
-                margin-bottom: 2rem;
+
+            .modal-body {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -333,18 +462,12 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#"><i class="fas fa-graduation-cap me-2"></i>MAJU Career</a>
+            <a class="navbar-brand" href="#"><img src="./logofavwhite.png" alt="MAJU Logo" class="me-2" style="height: 60px;"></i>MAJU Career</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#jobs">Jobs</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
                     </li>
@@ -448,27 +571,24 @@
                 <p>Discover exciting career opportunities at Mohammad Ali Jinnah University</p>
             </div>
             
-            <div class="row">
-               
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5>Showing 12 jobs</h5>
+                <select class="form-select w-auto">
+                    <option>Newest First</option>
+                    <option>Oldest First</option>
+                    <option>Job Title</option>
+                </select>
+            </div>
 
-                <!-- Job Listings -->
-                <div class="col-lg-9">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5>Showing 12 jobs</h5>
-                        <select class="form-select w-auto">
-                            <option>Newest First</option>
-                            <option>Oldest First</option>
-                            <option>Job Title</option>
-                        </select>
-                    </div>
-
-                    <!-- Sample Job Card -->
+            <!-- Job Cards Row -->
+            <div class="row g-4">                       
+                <!-- Job Card 1 -->
+                <div class="col-lg-4 col-md-6">
                     <div class="job-card">
+                        <div class="job-status status-active">Active</div>
                         <div class="job-header">
-                            <div>
-                                <h3 class="job-title">Assistant Professor - Computer Science</h3>
-                                <div class="job-university">Mohammad Ali Jinnah University</div>
-                            </div>
+                            <h3 class="job-title">Assistant Professor - Computer Science</h3>
+                            <div class="job-university">Mohammad Ali Jinnah University</div>
                             <span class="job-type">Faculty</span>
                         </div>
                         <div class="job-meta">
@@ -476,34 +596,26 @@
                             <span><i class="fas fa-users"></i> 45 applications</span>
                         </div>
                         
-                        <div class="job-skills">
-                            <span class="skill-tag">PhD in Computer Science</span>
-                            <span class="skill-tag">Research Experience</span>
-                            <span class="skill-tag">Programming</span>
-                            <span class="skill-tag">Teaching</span>
-                        </div>
                         <div class="job-actions">
                             <div>
-                                <a href="#" class="btn btn-apply">
-                                    <i class="fas fa-paper-plane me-2"></i>View Detail
-                                </a>
-                            </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <span class="job-date">2 days ago</span>
-                                <button class="btn btn-favorite" title="Add to favorites">
-                                    <i class="fas fa-heart"></i>
+                                <button class="btn btn-apply" data-bs-toggle="modal" data-bs-target="#jobModal" onclick="showJobDetails('Assistant Professor - Computer Science', 'Mohammad Ali Jinnah University', 'Faculty', 'We are seeking a qualified Assistant Professor in Computer Science to join our dynamic academic team. The candidate will be responsible for teaching undergraduate and graduate courses, conducting research, and contributing to departmental activities.', '45', 'careers@jinnah.edu', '2 days ago')">
+                                    <i class="fas fa-eye me-2"></i>View Detail
                                 </button>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="job-date">2 days ago</span>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- More Job Cards (Copy above structure for more jobs) -->
+                <!-- Job Card 2 -->
+                <div class="col-lg-4 col-md-6">
                     <div class="job-card">
+                        <div class="job-status status-active">Active</div>
                         <div class="job-header">
-                            <div>
-                                <h3 class="job-title">Visiting Faculty - Business Administration</h3>
-                                <div class="job-university">Mohammad Ali Jinnah University</div>
-                            </div>
+                            <h3 class="job-title">Visiting Faculty - Business Administration</h3>
+                            <div class="job-university">Mohammad Ali Jinnah University</div>
                             <span class="job-type">Visiting</span>
                         </div>
                         <div class="job-meta">
@@ -511,54 +623,167 @@
                             <span><i class="fas fa-users"></i> 28 applications</span>
                         </div>
                       
-                        <div class="job-skills">
-                            <span class="skill-tag">MBA/MS</span>
-                            <span class="skill-tag">Industry Experience</span>
-                            <span class="skill-tag">Communication</span>
-                            <span class="skill-tag">Leadership</span>
-                        </div>
                         <div class="job-actions">
                             <div>
-                                <a href="#" class="btn btn-apply">
-                                    <i class="fas fa-paper-plane me-2"></i>View Detail
-                                </a>
-                            </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <span class="job-date">5 days ago</span>
-                                <button class="btn btn-favorite" title="Add to favorites">
-                                    <i class="fas fa-heart"></i>
+                                <button class="btn btn-apply" data-bs-toggle="modal" data-bs-target="#jobModal" onclick="showJobDetails('Visiting Faculty - Business Administration', 'Mohammad Ali Jinnah University', 'Visiting', 'We are looking for experienced professionals to join our Business Administration department as Visiting Faculty. The role involves teaching business courses and sharing industry expertise with students.', '28', 'careers@jinnah.edu', '5 days ago')">
+                                    <i class="fas fa-eye me-2"></i>View Detail
                                 </button>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="job-date">5 days ago</span>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Pagination -->
-                    <nav class="mt-4">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                                <span class="page-link">Previous</span>
-                            </li>
-                            <li class="page-item active">
-                                <span class="page-link">1</span>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
-            </div>
+
+                <!-- Job Card 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="job-card">
+                        <div class="job-status status-inactive">Inactive</div>
+                        <div class="job-header">
+                            <h3 class="job-title">Lecturer - Software Engineering</h3>
+                            <div class="job-university">Mohammad Ali Jinnah University</div>
+                            <span class="job-type">Faculty</span>
+                        </div>
+                        <div class="job-meta">
+                            <span><i class="fas fa-map-marker-alt"></i> Karachi, Pakistan</span>
+                            <span><i class="fas fa-users"></i> 67 applications</span>
+                        </div>
+                      
+                        <div class="job-actions">
+                            <div>
+                                <button class="btn btn-apply" data-bs-toggle="modal" data-bs-target="#jobModal" onclick="showJobDetails('Lecturer - Software Engineering', 'Mohammad Ali Jinnah University', 'Faculty', 'Join our Computer Science department as a Lecturer in Software Engineering. Teach software development courses, guide student projects, and contribute to curriculum development.', '67', 'careers@jinnah.edu', '1 week ago')">
+                                    <i class="fas fa-eye me-2"></i>View Detail
+                                </button>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="job-date">1 week ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            <!-- Pagination -->
+            <nav class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <span class="page-link">Previous</span>
+                    </li>
+                    <li class="page-item active">
+                        <span class="page-link">1</span>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </section>
 
+    <!-- Job Detail Modal -->
+    <div class="modal fade" id="jobModal" tabindex="-1" aria-labelledby="jobModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="jobModalLabel">Job Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="job-detail-item">
+                        <span class="job-detail-label">Job Title</span>
+                        <div class="job-detail-value" id="modalJobTitle"></div>
+                    </div>
+                    
+                    <div class="job-detail-item">
+                        <span class="job-detail-label">University Name</span>
+                        <div class="job-detail-value" id="modalUniversityName"></div>
+                    </div>
+                    
+                    <div class="job-detail-item">
+                        <span class="job-detail-label">Job Type</span>
+                        <div class="job-detail-value" id="modalJobType"></div>
+                    </div>
+                    
+                    <div class="job-detail-item">
+                        <span class="job-detail-label">Description</span>
+                        <div class="job-detail-value job-description" id="modalDescription"></div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="job-detail-item">
+                                <span class="job-detail-label">Total Applications</span>
+                                <div class="job-detail-value" id="modalApplications"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="job-detail-item">
+                                <span class="job-detail-label">Upload Date</span>
+                                <div class="job-detail-value" id="modalUploadDate"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="job-detail-item">
+                        <span class="job-detail-label">Contact Information</span>
+                        <div class="job-detail-value" id="modalContact"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-apply-modal">
+                        <i class="fas fa-paper-plane me-2"></i>Apply Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h5><img src="./logofavwhite.png" alt="MAJU Logo" class="me-2" style="height: 60px;">MAJU Career Portal</h5>
+                <div class="footer-links">
+                    <a href="#about">About Us</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mohammad Ali Jinnah University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showJobDetails(title, university, jobType, description, applications, contact, uploadDate) {
+            document.getElementById('modalJobTitle').textContent = title;
+            document.getElementById('modalUniversityName').textContent = university;
+            document.getElementById('modalJobType').innerHTML = '<span class="job-type">' + jobType + '</span>';
+            document.getElementById('modalDescription').textContent = description;
+            document.getElementById('modalApplications').innerHTML = '<i class="fas fa-users me-2"></i>' + applications + ' applications received';
+            document.getElementById('modalContact').innerHTML = '<i class="fas fa-envelope me-2"></i>' + contact;
+            document.getElementById('modalUploadDate').innerHTML = '<i class="fas fa-calendar-alt me-2"></i>' + uploadDate;
+        }
+        // Add click event to Apply Now button in modal
+        document.querySelector('.btn-apply-modal').addEventListener('click', function() {
+            alert('Application form will open here. This will be connected to your backend application system.');
+        });
+    </script>
 </body>
 </html>
